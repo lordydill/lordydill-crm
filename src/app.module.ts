@@ -9,9 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(
-      'mongodb+srv://ariansyahakbaratech:xQINxrEBFGHlf21p@crm-praktek.mwrrrpi.mongodb.net/crm-praktek',
-    ),
+    MongooseModule.forRoot(process.env.MONGGO_CONNECTION!),
     PelangganModule,
     ProdukModule,
   ],
