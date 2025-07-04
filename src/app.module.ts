@@ -13,5 +13,6 @@ import { MongooseModule } from '@nestjs/mongoose';
     PelangganModule,
     ProdukModule,
   ],
+  // Perubahan kecil untuk testing commit
 })
 export class AppModule {}
