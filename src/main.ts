@@ -9,7 +9,7 @@ async function bootstrap() {
     .setDescription('ahmad fadil & ade budi setiawan')
     .setVersion('1.0')
 
-    .setDescription('ahmad fadil & ade budi setiawann')
+    .setDescription('ahmad fadill & ade budi setiawann')
     .setVersion('233657201002')
 
     .addBearerAuth(
