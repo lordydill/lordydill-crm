@@ -6,9 +6,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('PT Bayer Munich') // Judul API
-    .setDescription('API untuk Praktek Pelanggan - Ahmad Fadil & Ade Budi Setiawan (233657201002)')
-    .setVersion('1.0') // Versi aplikasi
+    .setTitle('PT bayer munich')
+    .setDescription(
+      'API untuk Praktek Pelanggan - Ahmad Fadil & Ade Budi Setiawan (233657201002)',
+    )
+    .setVersion('1.0')
     .addBearerAuth(
       {
         type: 'http',
