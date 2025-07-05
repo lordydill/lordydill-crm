@@ -4,23 +4,26 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const docConfig = new DocumentBuilder()
-    .setTitle('CRM Praktek') // Nama Kalian
-    .setDescription('API untuk Praktek Pelanggan') //NIM Kalian
-    .setVersion('1.0')
+
+  const config = new DocumentBuilder()
+    .setTitle('PT Bayer Munich') // Judul API
+    .setDescription('API untuk Praktek Pelanggan - Ahmad Fadil & Ade Budi Setiawan (233657201002)')
+    .setVersion('1.0') // Versi aplikasi
     .addBearerAuth(
       {
         type: 'http',
         scheme: 'bearer',
         bearerFormat: 'JWT',
-        description: 'Enter Access Token',
+        description: 'Masukkan access token di header',
         in: 'header',
       },
       'access_token',
     )
     .build();
-  const document = SwaggerModule.createDocument(app, docConfig);
-  SwaggerModule.setup('dokumentasi', app, document);
-  await app.listen(process.env.PORT ?? 3001);
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('/dokumentasi', app, document);
+
+  await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
