@@ -6,15 +6,15 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('CRM Praktek') // Bisa ganti sesuai kebutuhan
-    .setDescription('API untuk Praktek Pelanggan - Ahmad Fadil (233657201002)')
-    .setVersion('1.0')
+    .setTitle('PT Bayer Munich') // Ganti sesuai nama proyek atau perusahaan
+    .setDescription('API untuk Praktek Pelanggan - Ahmad Fadil & Ade Budi Setiawan (233657201002)')
+    .setVersion('1.0') // Versi aplikasi
     .addBearerAuth(
       {
         type: 'http',
         scheme: 'bearer',
         bearerFormat: 'JWT',
-        description: 'Enter Access Token',
+        description: 'Masukkan access token di header',
         in: 'header',
       },
       'access_token',
@@ -26,7 +26,4 @@ async function bootstrap() {
 
   await app.listen(process.env.PORT ?? 3000);
 }
-
-bootstrap().catch((err) => {
-  console.error('Error starting the app:', err);
-});
+bootstrap();

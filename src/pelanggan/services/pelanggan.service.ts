@@ -11,14 +11,17 @@ export class PelangganService {
     private readonly pelangganModel: Model<Pelanggan>,
   ) {}
 
+  // Fungsi untuk menyimpan data pelanggan ke MongoDB
   async simpanDataPelanggan(payload: PelangganDto): Promise<void> {
     await this.pelangganModel.create(payload);
   }
 
+  // Fungsi untuk mengambil semua pelanggan dari MongoDB
   async ambilSemuaPelanggan(): Promise<Pelanggan[]> {
     return this.pelangganModel.find().exec();
   }
 
+  // Fungsi statis (dummy) untuk testing lokal
   getNamaPelanggan(): object {
     const pelanggan = {
       namaLengkap: 'Ahmad Fadil',
@@ -31,6 +34,7 @@ export class PelangganService {
     return { pelanggan };
   }
 
+  // Fungsi dummy tambahan untuk logging ke console
   simpanNamaPelanggan(): void {
     const pelanggan = this.getNamaPelanggan();
     console.log('Ini nama pelanggan:', pelanggan);
