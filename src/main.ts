@@ -5,9 +5,9 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const docConfig = new DocumentBuilder()
-    .setTitle('PT Bayer Munich') // Judul dokumentasi
-    .setDescription('Ahmad Fadil & Ade Budi Setiawan - 233657201002') // Deskripsi & NIM
+  const config = new DocumentBuilder()
+    .setTitle('CRM Praktek') // Bisa ganti sesuai kebutuhan
+    .setDescription('API untuk Praktek Pelanggan - Ahmad Fadil (233657201002)')
     .setVersion('1.0')
     .addBearerAuth(
       {
@@ -21,9 +21,12 @@ async function bootstrap() {
     )
     .build();
 
-  const document = SwaggerModule.createDocument(app, docConfig);
+  const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/dokumentasi', app, document);
 
-  await app.listen(process.env.PORT ?? 3000); // Gunakan PORT dari .env atau default 3000
+  await app.listen(process.env.PORT ?? 3000);
 }
-bootstrap();
+
+bootstrap().catch((err) => {
+  console.error('Error starting the app:', err);
+});
