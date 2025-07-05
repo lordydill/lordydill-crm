@@ -1,18 +1,25 @@
 import { Module } from '@nestjs/common';
-import { PelangganModule } from './pelanggan/pelanggan.module';
-import { ProdukModule } from './produk/produk.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
+import { PelangganModule } from './pelanggan/pelanggan.module';
+import { ProdukModule } from './produk/produk.module';
+
 @Module({
   imports: [
+    // Membaca .env dan menjadikan variabelnya global
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(process.env.MONGGO_CONNECTION!),
+
+    // Koneksi ke MongoDB
+    MongooseModule.forRoot(
+      'mongodb+srv://ariansyahakbaratech:xQINxrEBFGHlf21p@crm-praktek.mwrrrpi.mongodb.net/crm-praktek',
+    ),
+
+    // Module internal aplikasi
     PelangganModule,
     ProdukModule,
   ],
-  // Perubahan kecil untuk testing commit
 })
 export class AppModule {}

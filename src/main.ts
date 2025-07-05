@@ -4,11 +4,14 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const docConfig = new DocumentBuilder()
+    .setTitle('PT bayer munich')
+    .setDescription('ahmad fadil & ade budi setiawan')
+    .setVersion('1.0')
 
-  const config = new DocumentBuilder()
-    .setTitle('Ahmad fadil')
-    .setDescription('233657201002')
-    .setVersion('0.0.1')
+    .setDescription('ahmad fadil & ade budi setiawan')
+    .setVersion('233657201002')
+
     .addBearerAuth(
       {
         type: 'http',
@@ -20,13 +23,8 @@ async function bootstrap() {
       'access_token',
     )
     .build();
-
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, docConfig);
   SwaggerModule.setup('/dokumentasi', app, document);
-
   await app.listen(process.env.PORT ?? 3000);
 }
-
-bootstrap().catch((err) => {
-  console.error('Error starting the app:', err);
-});
+bootstrap();
